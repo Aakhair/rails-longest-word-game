@@ -1,0 +1,17 @@
+<h1>Welcome to the Longest word Game !</h1>
+
+<h3>Here is you Grid</h3>
+<p>
+  <% @random.each do |letter| %>
+    <%= letter %>
+  <% end %>
+</p>
+
+<h4>What is you longest Word?</h3>
+<form action="/score" method="post" data-turbo="false">
+  <input type="text" name="answer" placeholder="My longest word is.." autocomplete="off">
+  <input type="submit" value="Check!">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :random_token, @random %>
+  <%= hidden_field_tag :start_time, @time %>
+</form>
